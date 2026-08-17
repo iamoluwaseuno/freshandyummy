@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fresh &amp; Yummy — Homemade Treats, Manchester | Order via WhatsApp</title>
-<meta name="description" content="Homemade banana bread (12+ flavours), flaky meat pies, puff puff & event catering in Manchester. UK delivery. Order in one WhatsApp chat.">
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');
+window.picFail=function(el,label){if(el.dataset.fb){el.style.display='none';}else{el.dataset.fb=1;el.src='https://placehold.co/640x480/A9502F/FFFDF9?text='+encodeURIComponent(label);}};
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
@@ -15,26 +16,29 @@
   --rust:#A9502F; --rust-dark:#7E3A1F; --rust-soft:#F3E0D2; --rust-pale:#FAEEE4;
   --banana:#F6C445; --banana-soft:#FCEBB8;
   --wa:#25D366; --wa-deep:#075E54; --wa-bubble:#D9FDD3;
+  --cocoa:#241207; --cocoa-2:#3a1d0d;
   --shadow:#EAD6C2; --r:22px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;
-  background-image:radial-gradient(rgba(169,80,47,.07) 1.5px, transparent 1.5px);background-size:26px 26px;}
+  background-image:radial-gradient(rgba(169,80,47,.07) 1.5px, transparent 1.5px);background-size:26px 26px}
 img,svg{display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
 .script{font-family:'Pacifico',cursive;color:var(--rust);font-weight:400}
 .mark{background:linear-gradient(var(--banana),var(--banana)) 0 72%/100% 42% no-repeat;padding:0 .1em;border-radius:4px}
+.grad{background:linear-gradient(92deg,var(--rust) 20%,var(--banana) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:200;background:linear-gradient(90deg,var(--rust),var(--banana))}
 
-/* ---------- marquee ---------- */
+/* marquee */
 .marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:9px 0;font-size:.85rem;letter-spacing:.06em;font-weight:600}
 .marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite}
 .marquee span{padding:0 1.4rem;white-space:nowrap}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* ---------- header ---------- */
+/* header */
 header{position:sticky;top:0;z-index:60;background:rgba(251,246,238,.92);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
 .head-in{display:flex;align-items:center;gap:22px;padding:14px 22px;max-width:1180px;margin:0 auto}
 .logo-lock{display:flex;align-items:center;gap:12px;margin-right:auto}
@@ -51,34 +55,100 @@ nav a:hover{background:var(--rust-soft);color:var(--rust-dark)}
 .btn-rust:hover{background:var(--rust-dark)}
 .btn-ink{background:var(--ink);color:var(--cream)}
 .btn-wa{background:var(--wa);color:#fff;box-shadow:4px 4px 0 rgba(7,94,84,.25)}
-.btn-wa:hover{box-shadow:7px 7px 0 rgba(7,94,84,.25)}
 .btn-sm{padding:.5rem .95rem;font-size:.85rem;box-shadow:3px 3px 0 var(--shadow)}
 .tray-btn{position:relative}
 .tray-count{position:absolute;top:-9px;right:-7px;background:var(--banana);border:2px solid var(--ink);color:var(--ink);font-size:.72rem;font-weight:900;min-width:26px;height:26px;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 5px}
 .tray-count.bump{animation:bump .4s}
 @keyframes bump{40%{transform:scale(1.35) rotate(8deg)}}
 
-/* ---------- hero ---------- */
-.hero{padding:64px 0 30px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.kicker{display:inline-flex;align-items:center;gap:.5rem;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:.45rem 1rem;font-weight:800;font-size:.8rem;letter-spacing:.08em;box-shadow:3px 3px 0 var(--shadow)}
-h1{font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.06;font-weight:900;letter-spacing:-.02em;margin:22px 0 18px}
-h1 .script{display:block;font-size:.72em;margin-top:.35em;transform:rotate(-2deg)}
-.hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:34rem;line-height:1.65;font-weight:500}
-.hero-ctas{display:flex;gap:14px;margin:28px 0 22px;flex-wrap:wrap}
-.trust{display:flex;gap:18px;flex-wrap:wrap;font-weight:700;font-size:.88rem;color:var(--ink-soft)}
-.trust span{display:flex;gap:.4rem;align-items:center}
+/* ============ NEW HERO ============ */
+.hero{background:radial-gradient(900px 480px at 75% -10%,var(--cocoa-2),transparent 70%),var(--cocoa);color:#fff;position:relative;overflow:hidden;padding:56px 0 0}
+.crumb{position:absolute;opacity:.16;font-size:2rem;animation:float 9s ease-in-out infinite;pointer-events:none;user-select:none}
+@keyframes float{50%{translate:0 -14px;rotate:8deg}}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:.45rem 1rem;font-weight:800;font-size:.78rem;letter-spacing:.14em}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);animation:pulse2 1.6s infinite}
+@keyframes pulse2{50%{opacity:.4}}
+.hero-rate{font-weight:800;font-size:.85rem;letter-spacing:.06em;color:var(--banana)}
+.mega{position:relative;text-align:center;margin:26px 0 8px;animation:riseIn 1s .1s both}
+@keyframes riseIn{from{opacity:0;transform:translateY(40px) scale(.96)}}
+.mega .weave{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);width:clamp(170px,30vw,430px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,.14);box-shadow:0 34px 70px rgba(0,0,0,.55);z-index:0;animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{50%{transform:translate(-50%,-52%) scale(1.04)}}
+.mega .weave img{width:100%;height:100%;object-fit:cover}
+.mega .word{position:relative;z-index:1;font-weight:900;font-size:clamp(4rem,15vw,13rem);letter-spacing:.04em;line-height:.95;text-transform:uppercase;text-shadow:0 14px 44px rgba(0,0,0,.5)}
+.hero-tag{text-align:center;font-weight:800;letter-spacing:.3em;font-size:clamp(.8rem,2vw,1.15rem);color:#f4e6d8;margin-top:6px;animation:riseIn 1s .3s both}
+.hero-tag em{color:var(--banana);font-style:normal}
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin:34px 0 10px;flex-wrap:wrap;animation:riseIn 1s .45s both}
+.btn-cream{background:#fff;color:var(--ink);border-color:#fff;box-shadow:4px 4px 0 rgba(0,0,0,.35)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid #fff;box-shadow:none}
+.btn-ghost:hover{background:rgba(255,255,255,.12);box-shadow:none}
+.hero-proof{display:flex;align-items:center;gap:14px;justify-content:flex-end;max-width:1180px;margin:-34px auto 0;padding:0 22px;animation:riseIn 1s .6s both}
+.avs{display:flex}
+.avs img{width:44px;height:44px;border-radius:50%;border:2.5px solid #fff;object-fit:cover;margin-left:-12px;background:#888}
+.avs img:first-child{margin-left:0}
+.avs .more{width:44px;height:44px;border-radius:50%;background:var(--banana);color:var(--ink);border:2.5px solid #fff;margin-left:-12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.75rem}
+.hero-proof small{display:block;font-weight:700;font-size:.78rem;color:#e8d7c6;max-width:230px;line-height:1.5}
+.hero-cards{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:end;padding:44px 0 46px;margin-top:26px}
+.hcard{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);border-radius:18px;padding:14px;transition:.25s;animation:riseIn 1s .7s both}
+.hcard:hover{background:rgba(255,255,255,.14);transform:translateY(-4px)}
+.hcard img{width:84px;height:84px;border-radius:14px;object-fit:cover;border:2px solid rgba(255,255,255,.25)}
+.hcard b{font-size:1rem}
+.hcard p{font-size:.78rem;color:#dcc9b8;line-height:1.5;margin-top:4px;font-weight:600}
+.mouse{width:26px;height:44px;border:2px solid rgba(255,255,255,.7);border-radius:999px;position:relative;margin:0 auto}
+.mouse::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;background:#fff;border-radius:4px;transform:translateX(-50%);animation:wheel 1.6s infinite}
+@keyframes wheel{60%{top:24px;opacity:0}}
+.scroll-hint{text-align:center;font-size:.72rem;letter-spacing:.2em;font-weight:800;color:#d9c6b4;margin-top:10px}
 
-/* chat mock */
-.chat-zone{position:relative}
-.chat-card{background:var(--paper);border:2px solid var(--ink);border-radius:26px;box-shadow:12px 12px 0 var(--rust-soft);overflow:hidden;transform:rotate(1.5deg);max-width:430px;margin-left:auto}
+/* feature icon row */
+.feats{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;padding:52px 0 8px}
+.feat{text-align:center;max-width:150px}
+.feat .ic{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--rust-soft);display:flex;align-items:center;justify-content:center;font-size:1.7rem;transition:.2s}
+.feat:hover .ic{transform:rotate(-8deg) scale(1.1);box-shadow:6px 6px 0 var(--banana)}
+.feat b{font-size:.8rem;letter-spacing:.14em}
+.feat small{display:block;color:var(--ink-soft);font-weight:600;font-size:.75rem;margin-top:4px}
+
+/* categories */
+.cats-sec{padding:56px 0 66px}
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.cat{background:var(--paper);border:2px solid var(--ink);border-radius:18px;padding:12px;box-shadow:6px 6px 0 var(--rust-soft);transition:.2s;text-align:center}
+.cat:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:9px 9px 0 var(--banana)}
+.cat .im{aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid var(--ink);background:var(--rust-soft);position:relative}
+.cat .im .p-emo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cat:hover img{transform:scale(1.12)}
+.cat b{display:block;font-size:.85rem;font-weight:800;padding:10px 0 4px}
+
+/* stats band */
+.stats-band{background:var(--ink);color:var(--cream);padding:34px 0;border-top:2px solid var(--ink)}
+.stats-band .wrap{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;text-align:center}
+.stat b{font-size:2.1rem;font-weight:900;color:var(--banana);display:block}
+.stat small{font-weight:800;font-size:.68rem;letter-spacing:.2em;color:#cbb9aa}
+
+/* sections */
+section{padding:72px 0}
+.sec-head{text-align:center;margin-bottom:46px}
+.sec-head .script{font-size:1.35rem}
+h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-.01em;margin-top:6px}
+.squig{margin:10px auto 0;width:150px}
+.sec-head p{color:var(--ink-soft);max-width:38rem;margin:14px auto 0;font-weight:500}
+
+/* how + chat */
+.how-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.step-row{display:flex;gap:18px;align-items:flex-start;background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:22px;box-shadow:7px 7px 0 var(--rust-soft);margin-bottom:18px;transition:.2s}
+.step-row:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--rust-soft)}
+.step-num{flex:none;width:50px;height:50px;border-radius:50%;background:var(--rust);color:#fff;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;box-shadow:3px 3px 0 var(--shadow)}
+.step-row h3{font-size:1.1rem;font-weight:800;margin-bottom:6px}
+.step-row p{color:var(--ink-soft);font-size:.92rem;line-height:1.6}
+.chat-card{background:var(--paper);border:2px solid var(--ink);border-radius:26px;box-shadow:12px 12px 0 var(--rust-soft);overflow:hidden;transform:rotate(1.5deg);max-width:440px;margin:0 auto}
 .chat-head{background:var(--wa-deep);color:#fff;display:flex;align-items:center;gap:12px;padding:14px 16px}
 .chat-ava{width:42px;height:42px;background:var(--paper);border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center}
 .chat-ava svg{width:30px;height:22px}
 .chat-head b{font-size:.98rem}
 .chat-head small{display:block;opacity:.85;font-size:.72rem}
 .chat-body{background:#EFE7DD;padding:18px 14px;display:flex;flex-direction:column;gap:10px}
-.bub{max-width:82%;padding:.6rem .85rem;border-radius:14px;font-size:.88rem;line-height:1.45;font-weight:500;box-shadow:0 1px 1px rgba(0,0,0,.12)}
+.bub{max-width:82%;padding:.6rem .85rem;border-radius:14px;font-size:.88rem;line-height:1.45;font-weight:500;box-shadow:0 1px 1px rgba(0,0,0,.12);animation:bubin .5s both}
+.bub:nth-child(2){animation-delay:.4s}.bub:nth-child(3){animation-delay:.9s}.bub:nth-child(4){animation-delay:1.4s}.bub:nth-child(5){animation-delay:1.9s}
+@keyframes bubin{from{opacity:0;transform:translateY(12px) scale(.95)}}
 .bub small{display:block;font-size:.65rem;opacity:.6;text-align:right;margin-top:2px}
 .bub.in{background:#fff;border-bottom-left-radius:4px;align-self:flex-start}
 .bub.out{background:var(--wa-bubble);border-bottom-right-radius:4px;align-self:flex-end}
@@ -89,79 +159,75 @@ h1 .script{display:block;font-size:.72em;margin-top:.35em;transform:rotate(-2deg
 .chat-foot{display:flex;gap:10px;padding:12px 14px;background:#F6F1E8;border-top:2px solid var(--ink);align-items:center}
 .chat-foot .fake{flex:1;background:#fff;border-radius:999px;padding:.6rem 1rem;font-size:.85rem;color:#9b938a;border:1px solid #ddd}
 .chat-foot .send{width:42px;height:42px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;color:#fff}
-.sticker{position:absolute;background:var(--banana);border:2px solid var(--ink);border-radius:14px;padding:.4rem .8rem;font-weight:900;font-size:.8rem;box-shadow:4px 4px 0 var(--shadow);animation:float 5s ease-in-out infinite}
-.sticker.s1{top:-16px;left:6%;transform:rotate(-6deg)}
-.sticker.s2{bottom:-14px;left:14%;background:var(--rust);color:#fff;transform:rotate(4deg);animation-delay:1.2s}
-@keyframes float{50%{translate:0 -9px}}
-.float-emo{position:absolute;font-size:2.2rem;animation:float 6s ease-in-out infinite}
-.float-emo.e1{top:-30px;right:8%}
-.float-emo.e2{bottom:-6px;right:-14px;animation-delay:2s}
 
-/* ---------- stories ---------- */
-.stories{padding:44px 0 8px}
-.story-row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
-.story{display:flex;flex-direction:column;align-items:center;gap:9px;font-weight:800;font-size:.78rem;letter-spacing:.1em}
-.story-ring{width:88px;height:88px;border-radius:50%;padding:4px;background:conic-gradient(var(--rust),var(--banana),var(--rust-dark),var(--rust));transition:transform .25s}
-.story:hover .story-ring{transform:scale(1.08) rotate(6deg)}
-.story-ring>div{width:100%;height:100%;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:2rem}
+/* photo strip */
+.strip{overflow:hidden;padding:34px 0 10px;position:relative}
+.strip::before,.strip::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.strip::before{left:0;background:linear-gradient(90deg,var(--cream),transparent)}
+.strip::after{right:0;background:linear-gradient(-90deg,var(--cream),transparent)}
+.strip-track{display:flex;gap:18px;width:max-content;animation:mq 45s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip-item{position:relative;border:2px solid var(--ink);border-radius:18px;overflow:hidden;height:180px;width:250px;flex:none;box-shadow:6px 6px 0 var(--rust-soft);transition:.2s;background:var(--rust-soft)}
+.strip-item:hover{transform:scale(1.05) rotate(-1deg);box-shadow:9px 9px 0 var(--banana)}
+.strip-item img{width:100%;height:100%;object-fit:cover}
+.strip-item span{position:absolute;bottom:8px;left:8px;background:var(--ink);color:var(--cream);font-size:.72rem;font-weight:800;padding:.25rem .6rem;border-radius:999px}
 
-/* ---------- sections ---------- */
-section{padding:72px 0}
-.sec-head{text-align:center;margin-bottom:46px}
-.sec-head .script{font-size:1.35rem}
-h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-.01em;margin-top:6px}
-.squig{margin:10px auto 0;width:150px}
-.sec-head p{color:var(--ink-soft);max-width:38rem;margin:14px auto 0;font-weight:500}
+/* product imagery */
+.p-img{position:relative;overflow:hidden;border-radius:16px;border:2px solid var(--ink);aspect-ratio:4/3;background:var(--rust-soft);cursor:zoom-in}
+.p-img .p-emo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+.p-img img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.p-img:hover img{transform:scale(1.1) rotate(1deg)}
+.badge{position:absolute;top:10px;left:10px;z-index:2;background:var(--banana);border:2px solid var(--ink);border-radius:999px;font-size:.68rem;font-weight:900;padding:.25rem .7rem;letter-spacing:.06em;animation:float 4s ease-in-out infinite}
 
-/* how it works */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.step{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:30px 26px;box-shadow:8px 8px 0 var(--rust-soft);position:relative;transition:.2s}
-.step:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--rust-soft)}
-.step-num{width:52px;height:52px;border-radius:50%;background:var(--rust);color:#fff;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.25rem;margin-bottom:16px;box-shadow:3px 3px 0 var(--shadow)}
-.step h3{font-size:1.2rem;font-weight:800;margin-bottom:8px}
-.step p{color:var(--ink-soft);font-size:.95rem;line-height:1.6}
-.step .emo{position:absolute;top:22px;right:22px;font-size:1.7rem}
-
-/* ---------- menu / builder ---------- */
+/* builder */
 .builder{background:var(--paper);border:2px solid var(--ink);border-radius:28px;box-shadow:12px 12px 0 var(--rust-soft);display:grid;grid-template-columns:1.15fr .85fr;overflow:hidden}
 .builder-left{padding:38px}
-.builder-right{background:var(--rust);color:#fff;border-left:2px solid var(--ink);padding:38px;display:flex;flex-direction:column;gap:18px}
+.builder-right{background:linear-gradient(160deg,var(--rust),var(--rust-dark));color:#fff;border-left:2px solid var(--ink);padding:34px;display:flex;flex-direction:column;gap:16px}
 .bl-label{font-size:.75rem;font-weight:900;letter-spacing:.2em;color:var(--rust-dark);margin:22px 0 12px}
 .bl-label:first-child{margin-top:0}
+.builder-right .bl-label{color:var(--banana)}
 .size-row{display:flex;gap:12px;flex-wrap:wrap}
 .size-opt{border:2px solid var(--ink);border-radius:16px;background:var(--cream);padding:.8rem 1.2rem;text-align:left;transition:.15s;box-shadow:3px 3px 0 var(--shadow)}
 .size-opt b{display:block;font-size:1rem}
 .size-opt small{color:var(--ink-soft);font-weight:600}
 .size-opt.sel{background:var(--banana);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--shadow)}
 .flavor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.flavor{border:2px solid var(--ink);border-radius:14px;background:var(--cream);padding:.65rem .5rem;font-weight:700;font-size:.86rem;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.15s;box-shadow:3px 3px 0 var(--shadow)}
+.flavor{border:2px solid var(--ink);border-radius:14px;background:var(--cream);padding:.6rem .4rem;font-weight:700;font-size:.82rem;display:flex;flex-direction:column;align-items:center;gap:4px;transition:.15s;box-shadow:3px 3px 0 var(--shadow)}
 .flavor small{font-weight:800;color:var(--rust-dark)}
-.flavor span{font-size:1.3rem}
 .flavor.sel{background:var(--rust);color:#fff;transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--shadow)}
 .flavor.sel small{color:var(--banana)}
+.f-thumb{width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid var(--ink);background:var(--rust-soft);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.f-thumb img{width:100%;height:100%;object-fit:cover}
 .mini-note{margin-top:14px;font-size:.82rem;font-weight:700;color:var(--rust-dark);background:var(--banana-soft);border:2px dashed var(--rust);border-radius:12px;padding:.55rem .9rem;display:none}
 .mini-note.show{display:block}
-.bb-visual{font-size:4.6rem;text-align:center;filter:drop-shadow(4px 6px 0 rgba(0,0,0,.25))}
-.bb-sum{background:rgba(0,0,0,.18);border:2px dashed rgba(255,255,255,.5);border-radius:16px;padding:16px 18px;font-size:.95rem;display:grid;gap:8px}
+.bb-img{width:100%;aspect-ratio:16/10;border-radius:18px;border:2px solid var(--ink);overflow:hidden;position:relative;background:rgba(0,0,0,.2)}
+.bb-img img{width:100%;height:100%;object-fit:cover;animation:kenb 9s ease-in-out infinite alternate}
+.bb-img.pop img{animation:kenb 9s ease-in-out infinite alternate, pop .45s}
+@keyframes kenb{from{transform:scale(1)}to{transform:scale(1.12) translate(2%,-2%)}}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+.bb-sum{background:rgba(0,0,0,.18);border:2px dashed rgba(255,255,255,.5);border-radius:16px;padding:14px 18px;font-size:.95rem;display:grid;gap:8px}
 .bb-sum div{display:flex;justify-content:space-between;gap:10px}
 .bb-sum b{text-align:right}
 .bb-price{font-size:2rem;font-weight:900;color:var(--banana)}
 .qty-row{display:flex;align-items:center;gap:16px}
-.qty-row button{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--ink);font-size:1.3rem;font-weight:900;border:2px solid var(--ink)}
+.qty-row button{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--ink);font-size:1.3rem;font-weight:900;border:2px solid var(--ink);transition:.15s}
+.qty-row button:hover{background:var(--banana)}
 .qty-row span{font-size:1.3rem;font-weight:900;min-width:26px;text-align:center}
 .builder-right .btn{justify-content:center}
 .treats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}
-.treat{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:26px;box-shadow:8px 8px 0 var(--rust-soft);display:flex;flex-direction:column;gap:10px;transition:.2s}
-.treat:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--rust-soft)}
-.treat .emo{font-size:2.6rem}
+.treat{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:20px;box-shadow:8px 8px 0 var(--rust-soft);display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s}
 .treat h3{font-size:1.15rem;font-weight:800}
 .treat p{color:var(--ink-soft);font-size:.9rem;line-height:1.55;flex:1}
 .treat .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .price-tag{font-weight:900;font-size:1.15rem;color:var(--rust-dark)}
+.cart-ico{width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:var(--banana);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:.2s;flex:none}
+.cart-ico:hover{transform:rotate(-10deg) scale(1.1)}
 
-/* sweet deal coupon */
-.deal{background:var(--paper);border:3px dashed var(--rust);border-radius:28px;padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;box-shadow:12px 12px 0 var(--banana-soft)}
-.deal-badge{width:110px;height:110px;border-radius:50%;background:var(--banana);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:2.8rem;transform:rotate(-8deg);box-shadow:4px 4px 0 var(--shadow)}
+/* deal */
+#deal{background:var(--banana-soft);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.deal{background:var(--paper);border:3px dashed var(--rust);border-radius:28px;padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;box-shadow:12px 12px 0 var(--rust-soft)}
+.deal-badge{width:120px;height:120px;border-radius:50%;overflow:hidden;border:2px solid var(--ink);transform:rotate(-4deg);box-shadow:5px 5px 0 var(--banana)}
+.deal-badge img{width:100%;height:100%;object-fit:cover;animation:kenb 8s ease-in-out infinite alternate}
 .deal h3{font-size:1.6rem;font-weight:900}
 .deal p{color:var(--ink-soft);margin-top:6px;font-weight:500}
 .deal .timer{margin-top:12px;font-weight:900;color:var(--rust-dark);letter-spacing:.06em}
@@ -170,42 +236,70 @@ h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:900;letter-spacing:-.01em;ma
 
 /* bundles */
 .bundles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.bundle{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;box-shadow:8px 8px 0 var(--rust-soft);transition:.2s;display:flex;flex-direction:column}
-.bundle:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--rust-soft)}
-.bundle .top{background:var(--rust-soft);border-bottom:2px solid var(--ink);font-size:3.4rem;text-align:center;padding:26px 0}
-.bundle .body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.bundle{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;box-shadow:8px 8px 0 var(--rust-soft);transition:box-shadow .2s;display:flex;flex-direction:column}
+.bundle .p-img{border:none;border-radius:0;border-bottom:2px solid var(--ink);aspect-ratio:16/9}
+.bundle .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .bundle h3{font-size:1.2rem;font-weight:900}
 .bundle ul{list-style:none;color:var(--ink-soft);font-size:.92rem;display:grid;gap:6px;flex:1}
 .bundle li::before{content:"✓ ";color:var(--rust);font-weight:900}
 .bundle .row{display:flex;justify-content:space-between;align-items:center}
 
+/* story split */
+.story-sec{background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story-img{border-radius:26px;border:2px solid var(--ink);overflow:hidden;aspect-ratio:4/3;box-shadow:12px 12px 0 var(--rust-soft)}
+.story-img img{width:100%;height:100%;object-fit:cover;animation:kenb 12s ease-in-out infinite alternate}
+.story-grid h2{margin:8px 0 16px}
+.story-grid p.txt{color:var(--ink-soft);line-height:1.75;font-weight:500;margin-bottom:26px}
+.story-feats{display:flex;gap:34px;flex-wrap:wrap;margin-top:8px}
+.story-feats div{display:flex;gap:10px;align-items:center;font-weight:800;font-size:.85rem}
+.story-feats .ic{width:44px;height:44px;border-radius:50%;background:var(--banana-soft);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.story-feats small{display:block;font-weight:600;color:var(--ink-soft)}
+
 /* catering */
-.cater{background:var(--ink);color:var(--cream);border-radius:32px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;border:2px solid var(--ink);box-shadow:12px 12px 0 var(--rust)}
+.cater{background:var(--ink);color:var(--cream);border-radius:32px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;box-shadow:12px 12px 0 var(--rust)}
 .cater .script{color:var(--banana)}
 .cater h2{margin:8px 0 14px}
 .cater p{color:#cfc4bc;line-height:1.7;font-weight:500}
 .cater .chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 28px}
-.cater .chips span{border:2px solid var(--cream);border-radius:999px;padding:.4rem .9rem;font-size:.82rem;font-weight:700}
-.mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.mosaic div{background:var(--rust);border:2px solid var(--cream);border-radius:18px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2.6rem;transition:.2s}
-.mosaic div:nth-child(even){background:var(--banana)}
-.mosaic div:hover{transform:rotate(-4deg) scale(1.06)}
+.cater .chips span{border:2px solid var(--cream);border-radius:999px;padding:.4rem .9rem;font-size:.82rem;font-weight:700;transition:.2s}
+.cater .chips span:hover{background:var(--banana);color:var(--ink);border-color:var(--ink);transform:rotate(-2deg)}
+.cater-img{border-radius:24px;border:2px solid var(--cream);overflow:hidden;aspect-ratio:4/3;box-shadow:10px 10px 0 var(--rust)}
+.cater-img img{width:100%;height:100%;object-fit:cover;animation:kenb 12s ease-in-out infinite alternate}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto;display:grid;gap:14px}
+.faq details{background:var(--paper);border:2px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--rust-soft);overflow:hidden;transition:.2s}
+.faq details[open]{box-shadow:8px 8px 0 var(--banana)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;font-weight:800;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);background:var(--banana);display:flex;align-items:center;justify-content:center;font-weight:900;transition:.25s}
+.faq details[open] summary .pl{transform:rotate(45deg);background:var(--rust);color:#fff}
+.faq .ans{padding:0 22px 20px;color:var(--ink-soft);line-height:1.7;font-weight:500}
 
 /* reviews */
+#reviews{background:var(--rust-pale);border-top:2px solid var(--ink)}
 .reviews-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .review{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:24px;box-shadow:6px 6px 0 var(--rust-soft);transition:.2s}
-.review:hover{transform:translate(-3px,-3px) rotate(-1deg);box-shadow:9px 9px 0 var(--rust-soft)}
-.review .stars{color:var(--banana);text-shadow:0 0 1px var(--ink);letter-spacing:2px;font-size:1rem}
+.review:hover{transform:translate(-3px,-3px) rotate(-1deg);box-shadow:9px 9px 0 var(--banana)}
+.review .stars{color:var(--rust);letter-spacing:2px;text-shadow:1px 1px 0 var(--banana)}
 .review p{font-size:.93rem;line-height:1.6;margin:12px 0 16px;font-weight:500}
 .review b{font-size:.88rem}
 .review small{display:block;color:var(--ink-soft);font-weight:600}
 
-/* delivery strip */
+/* ship */
 .ship{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.ship .card{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:30px;display:flex;gap:20px;align-items:center;box-shadow:8px 8px 0 var(--rust-soft)}
+.ship .card{background:var(--paper);border:2px solid var(--ink);border-radius:var(--r);padding:30px;display:flex;gap:20px;align-items:center;box-shadow:8px 8px 0 var(--rust-soft);transition:.2s}
+.ship .card:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--banana)}
 .ship .emo{font-size:2.8rem}
 .ship h3{font-weight:900;font-size:1.15rem}
 .ship p{color:var(--ink-soft);font-weight:500;margin-top:4px}
+
+/* cta band */
+.cta-band{background:linear-gradient(120deg,var(--rust),var(--rust-dark));border-radius:30px;color:#fff;padding:46px 50px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;box-shadow:12px 12px 0 var(--banana);border:2px solid var(--ink)}
+.cta-band h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:900}
+.cta-band h3 .script{color:var(--banana)}
+.cta-band p{color:#f4e2d4;font-weight:600;margin-top:6px}
 
 /* footer */
 footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 30px}
@@ -217,7 +311,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
 .foot-grid a.flink:hover{color:var(--banana)}
 .foot-bottom{border-top:1px solid #3a2e28;margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#8f847c;font-size:.82rem;font-weight:600}
 
-/* ---------- drawer / cart ---------- */
+/* drawer */
 .overlay{position:fixed;inset:0;background:rgba(25,18,16,.5);opacity:0;pointer-events:none;transition:.3s;z-index:90}
 .overlay.on{opacity:1;pointer-events:auto}
 .drawer{position:fixed;top:0;right:0;height:100dvh;width:min(440px,100%);background:var(--cream);border-left:2px solid var(--ink);z-index:100;transform:translateX(105%);transition:transform .38s cubic-bezier(.2,.9,.25,1);display:flex;flex-direction:column}
@@ -228,8 +322,9 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
 .drawer-body{flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
 .cart-empty{text-align:center;padding:50px 10px;color:var(--ink-soft);font-weight:600}
 .cart-empty .big{font-size:3.4rem;margin-bottom:12px}
-.line{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:4px 4px 0 var(--rust-soft)}
-.line .emo{font-size:1.7rem}
+.line{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:4px 4px 0 var(--rust-soft)}
+.line .thumb{width:48px;height:48px;border-radius:12px;overflow:hidden;border:2px solid var(--ink);flex:none;background:var(--rust-soft);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.line .thumb img{width:100%;height:100%;object-fit:cover}
 .line .info{flex:1}
 .line .info b{font-size:.92rem}
 .line .info small{display:block;color:var(--ink-soft);font-weight:600}
@@ -245,39 +340,52 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
 .drawer-foot .btn{justify-content:center;font-size:1.02rem}
 .fine{text-align:center;font-size:.75rem;color:var(--ink-soft);font-weight:600}
 
-/* fab + toast + fly */
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(25,18,16,.75);z-index:150;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.on{display:flex}
+.lb-card{background:var(--paper);border:2px solid var(--ink);border-radius:24px;max-width:560px;width:100%;overflow:hidden;box-shadow:14px 14px 0 var(--rust);animation:pop .35s;position:relative}
+.lb-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-bottom:2px solid var(--ink)}
+.lb-info{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lb-info b{font-size:1.2rem;font-weight:900;display:block}
+.lb-info small{color:var(--ink-soft);font-weight:700}
+.lb-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;background:var(--banana);border:2px solid var(--ink);font-size:1.4rem;font-weight:900}
+
+/* fab toast fly */
 .fab{position:fixed;bottom:22px;right:22px;z-index:80;width:62px;height:62px;border-radius:50%;background:var(--wa);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:5px 5px 0 rgba(7,94,84,.3);transition:.2s}
 .fab:hover{transform:scale(1.08)}
 .fab::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--wa);animation:pulse 2s infinite}
 @keyframes pulse{to{transform:scale(1.55);opacity:0}}
 .toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,80px);background:var(--ink);color:var(--cream);font-weight:800;padding:.8rem 1.4rem;border-radius:999px;border:2px solid var(--banana);z-index:120;transition:.35s;opacity:0}
 .toast.on{transform:translate(-50%,0);opacity:1}
-.fly-emo{position:fixed;z-index:130;font-size:1.6rem;pointer-events:none;transition:transform .7s cubic-bezier(.3,-0.2,.6,1), opacity .7s}
-
-/* reveal — only hidden when JS is alive */
+.fly-emo{position:fixed;z-index:130;font-size:1.6rem;pointer-events:none;transition:transform .7s cubic-bezier(.3,-.2,.6,1), opacity .7s}
 .js .reveal{opacity:0;transform:translateY(26px);transition:.7s ease}
 .js .reveal.in{opacity:1;transform:none}
 
+@media(max-width:1020px){.cats{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:960px){
   nav{display:none}
-  .hero-grid,.builder,.cater{grid-template-columns:1fr}
-  .chat-card{margin:30px auto 0;transform:none}
-  .steps,.treats-grid,.bundles-grid{grid-template-columns:1fr 1fr}
-  .reviews-grid{grid-template-columns:1fr 1fr}
+  .how-grid,.story-grid,.cater,.builder{grid-template-columns:1fr}
+  .builder-right{border-left:none;border-top:2px solid var(--ink)}
+  .treats-grid,.bundles-grid,.reviews-grid{grid-template-columns:1fr 1fr}
   .deal{grid-template-columns:1fr;text-align:center}
   .deal .col{align-items:center}
-  .builder-right{border-left:none;border-top:2px solid var(--ink)}
   .cater{padding:36px}
+  .hero-cards{grid-template-columns:1fr;gap:14px}
+  .hero-cards .mid{order:2}
+  .hero-proof{justify-content:center;margin-top:8px}
 }
 @media(max-width:620px){
-  .steps,.treats-grid,.bundles-grid,.reviews-grid,.ship{grid-template-columns:1fr}
+  .treats-grid,.bundles-grid,.reviews-grid,.ship,.cats{grid-template-columns:1fr}
   .flavor-grid{grid-template-columns:1fr 1fr}
   .head-in .btn-wa{display:none}
   section{padding:54px 0}
+  .strip-item{height:140px;width:200px}
+  .feats{gap:26px}
 }
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="logo" viewBox="0 0 240 170">
@@ -297,7 +405,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
     </g>
   </symbol>
   <symbol id="wa" viewBox="0 0 32 32">
-    <path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4 29l7.3-2.3c1.9 1 4.1 1.6 6.7 1.6 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm6.2 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-4.4-1-3.7-1.5-6.1-5.2-6.3-5.5-.2-.3-1.5-2-1.5-3.9s1-2.8 1.3-3.1c.3-.4.7-.5 1-.5h.7c.2 0 .5-.1.8.6.3.8 1 2.6 1.1 2.8.1.2.2.4 0 .7-.1.3-.2.4-.4.7l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.7 1.5 1.4 2.8 1.8 3.2 2 .4.2.6.2.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.3 1.1 2.7 1.3.4.2.7.3.8.5.1.2.1.9-.2 1.5z"/>
+    <path fill="currentColor" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.6.8 5 2.3 7L4 29l7.3-2.3c1.9 1 4.1 1.6 6.7 1.6 6.6 0 12-5.3 12-11.9S22.6 3 16 3zm6.2 16.9c-.3.8-1.5 1.5-2.1 1.6-.6.1-1.3.2-4.4-1-3.7-1.5-6.1-5.2-6.3-5.5-.2-.3-1.5-2-1.5-3.9s1-2.8 1.3-3.1c.3-.4.7-.5 1-.5h.7c.2 0 .5-.1.8.6.3.8 1 2.6 1.1 2.8.1.2.2.4 0 .7-.1.3-.2.4-.4.7l-.6.7c-.2.2-.4.4-.2.8.2 4 1 1.7 2.2 2.7 1.5 1.4 2.8 1.8 3.2 2 .4.2.6.2.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.3 1.1 2.7 1.3.4.2.7.3.8.5.1.2.1.9-.2 1.5z"/>
   </symbol>
 </svg>
 
@@ -312,7 +420,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
       <span><span class="logo-name">Fresh &amp; Yummy</span><br><span class="logo-tag">MANCHESTER · HOMEMADE</span></span>
     </a>
     <nav>
-      <a href="#menu">Menu</a><a href="#deal">Sweet Deal</a><a href="#bundles">Bundles</a><a href="#catering">Catering</a><a href="#reviews">Reviews</a>
+      <a href="#menu">Menu</a><a href="#deal">Sweet Deal</a><a href="#bundles">Bundles</a><a href="#catering">Catering</a><a href="#faq">FAQ</a><a href="#reviews">Reviews</a>
     </nav>
     <a class="btn btn-wa btn-sm" data-wa="Hello Fresh & Yummy! 👋 I'd like to place an order." href="#"><svg width="18" height="18"><use href="#wa"/></svg> WhatsApp</a>
     <button class="btn btn-ink btn-sm tray-btn" id="trayBtn"> Tray <span class="tray-count" id="trayCount">0</span></button>
@@ -320,22 +428,99 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
 </header>
 
 <main id="top">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal in">
-      <span class="kicker">🍌 HOMEMADE TREATS &amp; EVENT CATERING</span>
-      <h1>Baked with love in Manchester. <span class="script">ordered in one chat.</span></h1>
-      <p class="lead">Small-batch banana bread in 12+ flavours, crimped flaky pies, cloud-soft puff puff and elegant event catering. No apps, no accounts, no card forms — <span class="mark">your whole order is just a WhatsApp chat.</span></p>
-      <div class="hero-ctas">
-        <a href="#menu" class="btn btn-rust">🧺 Build your tray</a>
-        <a class="btn btn-wa" data-wa="Hello Fresh & Yummy! 👋 I'd like to place an order." href="#"><svg width="18" height="18"><use href="#wa"/></svg> Chat &amp; order</a>
-      </div>
-      <div class="trust"><span>⭐ Loved by 600+ foodies</span><span>🚚 UK delivery</span><span>📍 Manchester pickup</span></div>
+<!-- ============ NEW DARK HERO ============ -->
+<section class="hero" style="padding-top:44px">
+  <span class="crumb" style="top:12%;left:6%">🍌</span>
+  <span class="crumb" style="top:30%;left:14%;animation-delay:1s">🍫</span>
+  <span class="crumb" style="top:64%;left:4%;animation-delay:2s">🥜</span>
+  <span class="crumb" style="top:18%;right:8%;animation-delay:.5s">🥕</span>
+  <span class="crumb" style="top:52%;right:5%;animation-delay:1.6s">🍌</span>
+  <span class="crumb" style="top:78%;right:16%;animation-delay:2.4s">🌰</span>
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="kicker"><span class="dot"></span> HOMEMADE IN MANCHESTER · BAKING NOW</span>
+      <span class="hero-rate">★★★★★ · 5.0 FROM 600+ FOODIES</span>
     </div>
-    <div class="chat-zone reveal in">
-      <span class="sticker s1">LIVE ORDER CHAT 💬</span>
-      <span class="sticker s2">NO APP NEEDED</span>
-      <span class="float-emo e1">🍌</span><span class="float-emo e2">🥧</span>
+    <div class="mega">
+      <div class="weave"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=900&auto=format&fit=crop" alt="Fresh banana bread loaf" onerror="picFail(this,'Fresh Bakes')"></div>
+      <div class="word">Yummy</div>
+    </div>
+    <div class="hero-tag">FRESHLY BAKED <em>GOODNESS</em> IN EVERY BITE</div>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn btn-cream">Browse the menu</a>
+      <a class="btn btn-ghost" data-wa="Hello Fresh & Yummy! 👋 I'd like to place an order." href="#"><svg width="18" height="18"><use href="#wa"/></svg> Order on WhatsApp</a>
+    </div>
+    <div class="hero-proof">
+      <div class="avs">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="customer" onerror="picFail(this,'')">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="customer" onerror="picFail(this,'')">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="customer" onerror="picFail(this,'')">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="customer" onerror="picFail(this,'')">
+        <span class="more">+639</span>
+      </div>
+      <small>Followed by <b>zee_olubodun</b>, <b>aliceolaiya672</b> &amp; 641 more hungry people</small>
+    </div>
+    <div class="hero-cards">
+      <div class="hcard">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=400&auto=format&fit=crop" alt="Double chocolate banana bread" onerror="picFail(this,'Double Choc')">
+        <div><b>Double Chocolate 🍫</b><p>Rich, soft &amp; packed with real choc chunks. Our bestseller — it sells out first.</p></div>
+      </div>
+      <div class="mid">
+        <div class="mouse"></div>
+        <div class="scroll-hint">SCROLL FOR MORE</div>
+      </div>
+      <div class="hcard">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=400&auto=format&fit=crop" alt="Flaky meat pies" onerror="picFail(this,'Meat Pies')">
+        <div><b>Flaky Meat Pies 🥧</b><p>Golden, crimped &amp; filled with slow-cooked goodness. Dangerously addictive.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- feature icon row -->
+<div class="wrap feats">
+  <div class="feat reveal"><div class="ic">🌾</div><b>PREMIUM INGREDIENTS</b><small>Finest quality, always</small></div>
+  <div class="feat reveal" data-delay="100"><div class="ic">🔥</div><b>FRESHLY BAKED</b><small>Made to order</small></div>
+  <div class="feat reveal" data-delay="200"><div class="ic">💛</div><b>MADE WITH LOVE</b><small>For your special moments</small></div>
+  <div class="feat reveal" data-delay="300"><div class="ic">🚚</div><b>UK DELIVERY</b><small>Packed like treasure</small></div>
+</div>
+
+<!-- categories -->
+<section class="cats-sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="script">our collection</span><h2>Treats for <span class="grad">Every Occasion</span></h2>
+      <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="cats">
+      <a class="cat reveal" href="#menu"><div class="im"><span class="p-emo">🍌</span><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" alt="Banana bread" loading="lazy" onerror="picFail(this,'Banana Bread')"></div><b>Banana Bread</b></a>
+      <a class="cat reveal" data-delay="80" href="#menu"><div class="im"><span class="p-emo">🥧</span><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=500&auto=format&fit=crop" alt="Meat pies" loading="lazy" onerror="picFail(this,'Meat Pies')"></div><b>Meat Pies</b></a>
+      <a class="cat reveal" data-delay="160" href="#menu"><div class="im"><span class="p-emo">☁️</span><img src="https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=500&auto=format&fit=crop" alt="Puff puff" loading="lazy" onerror="picFail(this,'Puff Puff')"></div><b>Puff Puff</b></a>
+      <a class="cat reveal" data-delay="240" href="#menu"><div class="im"><span class="p-emo">🍚</span><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500&auto=format&fit=crop" alt="Jollof trays" loading="lazy" onerror="picFail(this,'Jollof')"></div><b>Jollof Trays</b></a>
+      <a class="cat reveal" data-delay="320" href="#catering"><div class="im"><span class="p-emo">🍽️</span><img src="https://images.unsplash.com/photo-1555244162-803834f70e68?q=80&w=500&auto=format&fit=crop" alt="Catering" loading="lazy" onerror="picFail(this,'Catering')"></div><b>Catering</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- stats band -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stat"><b data-count="404">0</b><small>BAKES POSTED</small></div>
+    <div class="stat"><b data-count="643">0</b><small>FOODIE FOLLOWERS</small></div>
+    <div class="stat"><b data-count="12">0</b><small>BREAD FLAVOURS</small></div>
+    <div class="stat"><b data-count="100">0</b><small>% HOMEMADE</small></div>
+  </div>
+</div>
+
+<!-- how it works + chat -->
+<section id="how">
+  <div class="wrap how-grid">
+    <div>
+      <div class="sec-head reveal" style="text-align:left;margin-bottom:30px"><span class="script">how it works</span><h2>From our oven to <span class="grad">your DMs</span></h2></div>
+      <div class="step-row reveal"><div class="step-num">1</div><div><h3>Fill your tray 🧺</h3><p>Pick sizes, flavours, pies and bundles. Your tray keeps the running total — just like a basket.</p></div></div>
+      <div class="step-row reveal" data-delay="120"><div class="step-num">2</div><div><h3>Checkout in chat 💬</h3><p>One tap sends your full order — items, totals, your name — pre-typed into our WhatsApp. Just hit send.</p></div></div>
+      <div class="step-row reveal" data-delay="240"><div class="step-num">3</div><div><h3>We bake, you flex 🚚</h3><p>We confirm in chat, you pay in chat, then collect in Manchester or get it shipped anywhere in the UK.</p></div></div>
+    </div>
+    <div class="reveal" data-delay="150">
       <div class="chat-card">
         <div class="chat-head">
           <div class="chat-ava"><svg><use href="#logo"/></svg></div>
@@ -355,37 +540,15 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
   </div>
 </section>
 
-<div class="stories wrap">
-  <div class="story-row">
-    <a class="story" href="#menu"><div class="story-ring"><div>🍞</div></div>OUR BREADS</a>
-    <a class="story" href="#menu"><div class="story-ring"><div>📜</div></div>MENU</a>
-    <a class="story" href="#deal"><div class="story-ring"><div>🏷️</div></div>SWEET DEAL</a>
-    <a class="story" href="#catering"><div class="story-ring"><div>🍽️</div></div>CATERING</a>
-    <a class="story" data-wa="Hello Fresh & Yummy! 😊 I have a question." href="#"><div class="story-ring"><div>💬</div></div>CONTACT</a>
-  </div>
-</div>
+<div class="strip"><div class="strip-track" id="stripTrack"></div></div>
 
-<section id="how">
+<!-- menu -->
+<section id="menu" style="padding-top:40px">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="script">how it works</span><h2>From our oven to your DMs</h2>
+    <div class="sec-head reveal"><span class="script">the star of the show</span><h2>Build your <span class="grad">banana bread</span></h2>
       <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
-      <p>Shop it like a website, check out like a friend. Every order lands straight in our WhatsApp.</p>
+      <p>Tap a flavour to see it. Choose a size, stack your tray — prices update live.</p>
     </div>
-    <div class="steps">
-      <div class="step reveal"><span class="emo">🧺</span><div class="step-num">1</div><h3>Fill your tray</h3><p>Pick sizes, flavours, pies and bundles. Your tray keeps the running total — just like a basket.</p></div>
-      <div class="step reveal"><span class="emo">💬</span><div class="step-num">2</div><h3>Checkout in chat</h3><p>One tap sends your full order — items, totals, your name — pre-typed into our WhatsApp. Just hit send.</p></div>
-      <div class="step reveal"><span class="emo">🚚</span><div class="step-num">3</div><h3>We bake, you flex</h3><p>We confirm in chat, you pay in chat, then collect in Manchester or get it shipped anywhere in the UK.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="menu" style="padding-top:20px">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="script">the star of the show</span><h2>Build your banana bread</h2>
-      <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
-      <p>Choose a size, pick a flavour, stack your tray. Prices update live.</p>
-    </div>
-
     <div class="builder reveal">
       <div class="builder-left">
         <div class="bl-label">1 · PICK A SIZE</div>
@@ -401,7 +564,8 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
         <div class="qty-row"><button id="qMinus" aria-label="less">−</button><span id="qVal">1</span><button id="qPlus" aria-label="more">+</button></div>
       </div>
       <div class="builder-right">
-        <div class="bb-visual" id="bbVisual">🍌</div>
+        <div class="bl-label">TODAY'S BAKE</div>
+        <div class="bb-img pop" id="bbImgWrap"><img id="bbImg" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=900&auto=format&fit=crop" alt="Selected banana bread" onerror="picFail(this,'Banana Bread')"></div>
         <div class="bb-sum">
           <div><span>Size</span><b id="sumSize">Mini</b></div>
           <div><span>Flavour</span><b id="sumFlav">Double Chocolate</b></div>
@@ -410,49 +574,61 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
         </div>
         <div class="bb-price" id="bbTotal">£3.00</div>
         <button class="btn btn-ink" id="bbAdd">Add to tray 🧺</button>
-        <a class="btn btn-wa" id="bbWa" href="#" style="justify-content:center"><svg width="18" height="18"><use href="#wa"/></svg> Order this via chat</a>
+        <a class="btn btn-wa" id="bbWa" href="#"><svg width="18" height="18"><use href="#wa"/></svg> Order this via chat</a>
       </div>
     </div>
-
-    <div class="treats-grid">
-      <div class="treat reveal"><span class="emo">🥧</span><h3>Flaky Meat Pie</h3><p>Golden, crimped, packed with slow-cooked flavour. The one that started the queue.</p><div class="row"><span class="price-tag">£3.50</span><button class="btn btn-rust btn-sm" data-add="pie">Add +</button></div></div>
-      <div class="treat reveal"><span class="emo">☁️</span><h3>Soft Puff Puff (6 pack)</h3><p>Cloud-soft, golden-fried, dangerously dippable. Tag a puff puff lover.</p><div class="row"><span class="price-tag">£4.50</span><button class="btn btn-rust btn-sm" data-add="puff6">Add +</button></div></div>
-      <div class="treat reveal"><span class="emo">🍚</span><h3>Large Tray Jollof</h3><p>Party-sized smoky jollof rice tray — feeds a crowd, starts a conversation.</p><div class="row"><span class="price-tag">£40.00</span><button class="btn btn-rust btn-sm" data-add="jollof">Add +</button></div></div>
-    </div>
+    <div class="treats-grid" id="treatsGrid"></div>
   </div>
 </section>
 
-<section id="deal" style="padding-top:10px">
+<!-- deal -->
+<section id="deal">
   <div class="wrap">
     <div class="deal reveal">
-      <div class="deal-badge">🏷️</div>
+      <div class="deal-badge"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=400&auto=format&fit=crop" alt="Sweet deal" onerror="picFail(this,'Sweet Deal')"></div>
       <div>
-        <h3>This week's Sweet Deal</h3>
+        <h3>This week's Sweet Deal 🏷️</h3>
         <p><b>2 Midi + 2 Mini banana breads</b> — any flavours. Built for sharing (or not, we don't judge).</p>
         <div class="timer" id="dealTimer">⏳ Ends soon</div>
       </div>
       <div class="col">
         <div><span class="old">£22.00</span> <span class="price-tag" style="font-size:1.6rem">£18.00</span></div>
         <button class="btn btn-rust" data-add="sweetdeal">Add deal to tray 🧺</button>
-        <a class="btn btn-wa btn-sm" data-wa="Hi! I'd like to claim this week's Sweet Deal 🏷️🍌 (2 Midi + 2 Mini)" href="#"><svg width="16" height="16"><use href="#wa"/></svg> or claim via chat</a>
+        <a class="btn btn-wa btn-sm" data-wa="Hi! I'd like to claim this week's Sweet Deal 🏷️ (2 Midi + 2 Mini)" href="#"><svg width="16" height="16"><use href="#wa"/></svg> or claim via chat</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="bundles" style="padding-top:20px">
+<!-- bundles -->
+<section id="bundles">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="script">feed the whole group</span><h2>Bundles &amp; boxes</h2>
+    <div class="sec-head reveal"><span class="script">feed the whole group</span><h2>Bundles &amp; <span class="grad">boxes</span></h2>
       <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
     </div>
-    <div class="bundles-grid">
-      <div class="bundle reveal"><div class="top">🧺</div><div class="body"><h3>The Yummy Box</h3><ul><li>10 flaky meat pies</li><li>5 mini banana breads</li><li>3 soft puff puff</li></ul><div class="row"><span class="price-tag">£35.00</span><button class="btn btn-rust btn-sm" data-add="yummybox">Add +</button></div></div></div>
-      <div class="bundle reveal"><div class="top">🥧</div><div class="body"><h3>Pie Dozen</h3><ul><li>12 flaky meat pies</li><li>Baked fresh for your date</li><li>Perfect office / party spread</li></ul><div class="row"><span class="price-tag">£36.00</span><button class="btn btn-rust btn-sm" data-add="piedozen">Add +</button></div></div></div>
-      <div class="bundle reveal"><div class="top">🎁</div><div class="body"><h3>Gift a Loaf</h3><ul><li>1 Maxi loaf, any flavour</li><li>Hand-tied note card</li><li>"Your order made my day" energy</li></ul><div class="row"><span class="price-tag">from £14.00</span><a class="btn btn-wa btn-sm" data-wa="Hi! I'd like to gift a Maxi banana bread 🎁" href="#"><svg width="16" height="16"><use href="#wa"/></svg> Chat</a></div></div></div>
+    <div class="bundles-grid" id="bundlesGrid"></div>
+  </div>
+</section>
+
+<!-- story split -->
+<section class="story-sec" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img reveal"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1000&auto=format&fit=crop" alt="Baking with love" loading="lazy" onerror="picFail(this,'Baked With Love')"></div>
+    <div class="reveal" data-delay="120">
+      <span class="script">our story</span>
+      <h2>Baked with <span class="script">passion</span>, made for you.</h2>
+      <p class="txt">At Fresh &amp; Yummy, every celebration deserves something sweet and unforgettable. From classic banana bread to elegant event table setups, we bake every loaf with love and attention to detail — then deliver it with a smile (and a WhatsApp message 😄).</p>
+      <a class="btn btn-rust" data-wa="Hello Fresh & Yummy! 💛 I'd love to know more about your story and menu." href="#">Chat with the baker</a>
+      <div class="story-feats">
+        <div><span class="ic">🌾</span><span>100% Fresh<small>Baked fresh everyday</small></span></div>
+        <div><span class="ic">🎀</span><span>Custom Made<small>Designed just for you</small></span></div>
+        <div><span class="ic">⏰</span><span>On-Time<small>Delivered with care</small></span></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- catering -->
 <section id="catering">
   <div class="wrap">
     <div class="cater reveal">
@@ -463,21 +639,45 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
         <div class="chips"><span>🎂 Birthdays</span><span>💍 Weddings</span><span> Corporate</span><span>🍼 Showers</span><span>🎓 Graduations</span></div>
         <a class="btn btn-wa" data-wa="Hello Fresh & Yummy! 🍽️ I'd love a catering / table setup quote. My event date is: __ and headcount is: __" href="#"><svg width="18" height="18"><use href="#wa"/></svg> Get a quote on WhatsApp</a>
       </div>
-      <div class="mosaic"><div>🍽️</div><div>🥧</div><div>🍌</div><div>✨</div><div>🧁</div><div>🎉</div><div>☁️</div><div>🍚</div><div>💛</div></div>
+      <div class="cater-img"><img src="https://images.unsplash.com/photo-1555244162-803834f70e68?q=80&w=1000&auto=format&fit=crop" alt="Event catering table" loading="lazy" onerror="picFail(this,'Catering')"></div>
     </div>
   </div>
 </section>
 
-<section id="reviews" style="padding-top:10px">
+<!-- faq -->
+<section id="faq" style="padding-top:20px">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="script">the reviews came before we even packed 😂</span><h2>Word on the street</h2>
+    <div class="sec-head reveal"><span class="script">good to know</span><h2>Quick questions, <span class="grad">quick answers</span></h2>
+      <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="faq">
+      <details class="reveal" open><summary>How do I pay? 💷<span class="pl">+</span></summary><div class="ans">Everything happens in WhatsApp chat — we confirm your order, send payment details, and you pay right there. No cards on the site, no accounts, no stress.</div></details>
+      <details class="reveal" data-delay="80"><summary>How fast is delivery? 🚚<span class="pl">+</span></summary><div class="ans">Manchester pickup can be same-day. UK orders ship tracked, next-day where possible. We'll confirm your slot in chat before you pay.</div></details>
+      <details class="reveal" data-delay="160"><summary>Is there a minimum order? 📏<span class="pl">+</span></summary><div class="ans">For mini banana breads, yes — 5 minis minimum (they're tiny, you'll want 5 😄). Midis, maxis, pies and bundles have no minimum.</div></details>
+      <details class="reveal" data-delay="240"><summary>Can you handle allergies & custom requests? 🥜<span class="pl">+</span></summary><div class="ans">Just tell us in the notes box or in chat — nuts, gluten, egg-free requests, custom toppers, gift notes. We'll always be honest about what's possible from our kitchen.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="script">the reviews came before we even packed 😂</span><h2>Loved by many</h2>
       <svg class="squig" viewBox="0 0 150 12" fill="none"><path d="M2 8q12-10 24 0t24 0 24 0 24 0 24 0" stroke="#A9502F" stroke-width="4" stroke-linecap="round"/></svg>
     </div>
     <div class="reviews-grid">
       <div class="review reveal"><div class="stars">★★★★★</div><p>"You found the best banana bread in the UK, no debate. The double choc maxi is criminal levels of good."</p><b>Amaka O.</b><small>Manchester · Pickup</small></div>
-      <div class="review reveal"><div class="stars">★★★★★</div><p>"Ordered on WhatsApp at 9am, collected by 5pm. Easiest catering decision I've ever made."</p><b>Alice O.</b><small>Corporate event</small></div>
-      <div class="review reveal"><div class="stars">★★★★★</div><p>"Pies flaky, puff puff soft, jollof tray EMPTY in minutes 😂 Book them before I book them."</p><b>Tobi A.</b><small>Wedding client</small></div>
-      <div class="review reveal"><div class="stars">★★★★★</div><p>"Shipped to London next-day and still tasted oven-fresh. The Nutella mini went in one bite."</p><b>Zee O.</b><small>London · UK delivery</small></div>
+      <div class="review reveal" data-delay="100"><div class="stars">★★★★★</div><p>"Ordered on WhatsApp at 9am, collected by 5pm. Easiest catering decision I've ever made."</p><b>Alice O.</b><small>Corporate event</small></div>
+      <div class="review reveal" data-delay="200"><div class="stars">★★★★★</div><p>"Pies flaky, puff puff soft, jollof tray EMPTY in minutes 😂 Book them before I book them."</p><b>Tobi A.</b><small>Wedding client</small></div>
+      <div class="review reveal" data-delay="300"><div class="stars">★★★★★</div><p>"Shipped to London next-day and still tasted oven-fresh. The Nutella mini went in one bite."</p><b>Zee O.</b><small>London · UK delivery</small></div>
+    </div>
+    <div style="height:40px"></div>
+    <div class="cta-band reveal">
+      <div><h3>Celebrate every moment with <span class="script">something sweet.</span></h3><p>Your tray is one tap away — we'll handle the rest in chat.</p></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#menu" class="btn btn-cream">Build your tray</a>
+        <a class="btn btn-wa" data-wa="Hello Fresh & Yummy! 🎉 I want to order something sweet." href="#"><svg width="18" height="18"><use href="#wa"/></svg> Chat now</a>
+      </div>
     </div>
   </div>
 </section>
@@ -485,7 +685,7 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
 <section style="padding-top:0">
   <div class="wrap ship">
     <div class="card reveal"><span class="emo">📍</span><div><h3>Manchester Pickup</h3><p>Free pickup, same-day slots when the oven allows. We'll pin the spot in chat.</p></div></div>
-    <div class="card reveal"><span class="emo">🚚</span><div><h3>UK-Wide Delivery</h3><p>Tracked and packed like treasure — next-day where possible, everywhere else asap.</p></div></div>
+    <div class="card reveal" data-delay="120"><span class="emo">🚚</span><div><h3>UK-Wide Delivery</h3><p>Tracked and packed like treasure — next-day where possible, everywhere else asap.</p></div></div>
   </div>
 </section>
 </main>
@@ -521,79 +721,158 @@ footer{background:var(--ink);color:var(--cream);margin-top:80px;padding:64px 0 3
   </div>
 </aside>
 
+<div class="lightbox" id="lightbox">
+  <div class="lb-card">
+    <button class="lb-close" id="lbClose" aria-label="close">×</button>
+    <img id="lbImg" src="" alt="Product photo">
+    <div class="lb-info">
+      <div><b id="lbName"></b><small id="lbSub"></small></div>
+      <a class="btn btn-wa" id="lbWa" href="#"><svg width="18" height="18"><use href="#wa"/></svg> Order this</a>
+    </div>
+  </div>
+</div>
+
 <a class="fab" data-wa="Hello Fresh & Yummy! 👋 I'd like to place an order." href="#" aria-label="Chat on WhatsApp"><svg width="30" height="30" style="color:#fff"><use href="#wa"/></svg></a>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
 "use strict";
+/* ============================================================
+   🛒 DUMMY DATA — EDIT HERE. img: accepts any online URL or a
+   local file like "img/pies.jpg". Broken links auto-fallback:
+   online photo → branded placeholder → emoji tile.
+   ============================================================ */
+var MENU={
+  flavors:[
+    {id:'raisins', n:'Raisins',          emoji:'🍇', img:'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop', p:{mini:2.5,midi:7,maxi:14}},
+    {id:'carrots', n:'Carrots',          emoji:'🥕', img:'https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=600&auto=format&fit=crop', p:{mini:2.5,midi:7,maxi:14}},
+    {id:'redvelvet', n:'Red Velvet',     emoji:'❤️', img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop', p:{mini:3,midi:8,maxi:17}, badge:'Fan fave'},
+    {id:'doublechoc', n:'Double Chocolate', emoji:'🍫', img:'https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=600&auto=format&fit=crop', p:{mini:3,midi:8,maxi:17}, badge:'Bestseller'},
+    {id:'nutty', n:'Nutty Mix',          emoji:'🥜', img:'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600&auto=format&fit=crop', p:{mini:3,midi:8,maxi:17}},
+    {id:'nutella', n:'Nutella',          emoji:'🌰', img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=600&auto=format&fit=crop', p:{mini:3,midi:8,maxi:17}, badge:'Indulgent'}
+  ],
+  treats:[
+    {id:'pie',   name:'Flaky Meat Pie', emoji:'🥧', img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=700&auto=format&fit=crop', price:3.5, badge:'Bestseller', desc:'Golden, crimped, packed with slow-cooked flavour. The one that started the queue.'},
+    {id:'puff6', name:'Soft Puff Puff (6 pack)', emoji:'☁️', img:'https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=700&auto=format&fit=crop', price:4.5, desc:'Cloud-soft, golden-fried, dangerously dippable. Tag a puff puff lover.'},
+    {id:'jollof', name:'Large Tray Jollof', emoji:'🍚', img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=700&auto=format&fit=crop', price:40, badge:'Party size', desc:'Party-sized smoky jollof rice tray — feeds a crowd, starts a conversation.'}
+  ],
+  bundles:[
+    {id:'yummybox', name:'The Yummy Box', emoji:'🧺', img:'https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?q=80&w=700&auto=format&fit=crop', price:35, badge:'Gift-ready', items:['10 flaky meat pies','5 mini banana breads','3 soft puff puff']},
+    {id:'piedozen', name:'Pie Dozen', emoji:'🥧', img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=700&auto=format&fit=crop', price:36, items:['12 flaky meat pies','Baked fresh for your date','Perfect office / party spread']},
+    {id:'giftloaf', name:'Gift a Loaf', emoji:'🎁', img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=700&auto=format&fit=crop', price:14, from:true, items:['1 Maxi loaf, any flavour','Hand-tied note card','"Your order made my day" energy']}
+  ]
+};
 var WA='447366475278';
+/* ============ end of editable data ============ */
+
 function wa(m){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(m);}
 function gbp(n){return '£'+n.toFixed(2);}
 document.querySelectorAll('[data-wa]').forEach(function(a){a.href=wa(a.getAttribute('data-wa'));a.target='_blank';a.rel='noopener';});
 var mq=document.getElementById('mq'); mq.innerHTML+=mq.innerHTML;
 
-/* ------- data ------- */
-var SIZES={mini:{label:'Mini'},midi:{label:'Midi'},maxi:{label:'Maxi'}};
-var FLAVORS=[
- {n:'Raisins',e:'🍇',p:{mini:2.5,midi:7,maxi:14}},
- {n:'Carrots',e:'🥕',p:{mini:2.5,midi:7,maxi:14}},
- {n:'Red Velvet',e:'❤️',p:{mini:3,midi:8,maxi:17}},
- {n:'Double Chocolate',e:'🍫',p:{mini:3,midi:8,maxi:17}},
- {n:'Nutty Mix',e:'🥜',p:{mini:3,midi:8,maxi:17}},
- {n:'Nutella',e:'🌰',p:{mini:3,midi:8,maxi:17}}];
-var PRODUCTS={
- pie:{emoji:'🥧',name:'Flaky Meat Pie',price:3.5},
- puff6:{emoji:'☁️',name:'Soft Puff Puff (6 pack)',price:4.5},
- jollof:{emoji:'🍚',name:'Large Tray Jollof',price:40},
- sweetdeal:{emoji:'🏷️',name:'Sweet Deal (2 Midi + 2 Mini)',price:18},
- yummybox:{emoji:'🧺',name:'The Yummy Box',price:35},
- piedozen:{emoji:'🥧',name:'Pie Dozen (12)',price:36}};
+var ALL={};
+MENU.flavors.forEach(function(f){ALL[f.id]={name:f.n+' Banana Bread',img:f.img,emoji:f.emoji,sub:'from '+gbp(f.p.mini)};});
+MENU.treats.forEach(function(t){ALL[t.id]={name:t.name,img:t.img,emoji:t.emoji,sub:gbp(t.price)};});
+MENU.bundles.forEach(function(b){ALL[b.id]={name:b.name,img:b.img,emoji:b.emoji,sub:(b.from?'from ':'')+gbp(b.price)};});
 
-/* ------- builder ------- */
+addEventListener('scroll',function(){
+  var h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12}):null;
+function watchReveals(){$('.reveal:not(.in)').forEach(function(el){el.style.transitionDelay=(el.getAttribute('data-delay')||0)+'ms';if(io)io.observe(el);else el.classList.add('in');});}
+function $(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+
+function animateCount(el){var target=+el.getAttribute('data-count'),t0=null;
+  function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(target*k*k);if(k<1)requestAnimationFrame(step);}
+  requestAnimationFrame(step);}
+var cio=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){animateCount(x.target);cio.unobserve(x.target);}});},{threshold:.6}):null;
+$('[data-count]').forEach(function(el){if(cio)cio.observe(el);else el.textContent=el.getAttribute('data-count');});
+
+var tiltEl=null;
+document.addEventListener('mousemove',function(e){
+  var t=e.target.closest?e.target.closest('.tilt'):null;
+  if(t!==tiltEl){if(tiltEl)tiltEl.style.transform='';tiltEl=t;}
+  if(!t)return;
+  var r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  t.style.transform='perspective(800px) rotateX('+(-y*6)+'deg) rotateY('+(x*6)+'deg) translateY(-4px)';
+});
+
+/* builder */
+var SIZES={mini:{label:'Mini'},midi:{label:'Midi'},maxi:{label:'Maxi'}};
 var bb={size:'mini',flavor:'Double Chocolate',qty:1};
 var flavorGrid=document.getElementById('flavorGrid');
-function curFlav(){return FLAVORS.find(function(f){return f.n===bb.flavor;});}
+function curFlav(){return MENU.flavors.filter(function(f){return f.n===bb.flavor;})[0];}
 function renderFlavors(){
-  flavorGrid.innerHTML=FLAVORS.map(function(f){
-    return '<button class="flavor '+(f.n===bb.flavor?'sel':'')+'" data-f="'+f.n+'"><span>'+f.e+'</span>'+f.n+'<small>'+gbp(f.p[bb.size])+'</small></button>';
+  flavorGrid.innerHTML=MENU.flavors.map(function(f){
+    return '<button class="flavor '+(f.n===bb.flavor?'sel':'')+'" data-f="'+f.n+'">'+
+      '<span class="f-thumb"><img src="'+f.img+'" alt="" loading="lazy" onerror="this.parentNode.textContent=\''+f.emoji+'\'"></span>'+
+      f.n+'<small>'+gbp(f.p[bb.size])+'</small></button>';
   }).join('');
 }
 flavorGrid.addEventListener('click',function(e){var b=e.target.closest('.flavor');if(!b)return;bb.flavor=b.getAttribute('data-f');update();});
 document.getElementById('sizeRow').addEventListener('click',function(e){
   var b=e.target.closest('.size-opt');if(!b)return;bb.size=b.getAttribute('data-size');
-  document.querySelectorAll('.size-opt').forEach(function(x){x.classList.toggle('sel',x===b);});update();});
+  $('.size-opt').forEach(function(x){x.classList.toggle('sel',x===b);});update();});
 document.getElementById('qMinus').addEventListener('click',function(){bb.qty=Math.max(1,bb.qty-1);update();});
 document.getElementById('qPlus').addEventListener('click',function(){bb.qty=Math.min(50,bb.qty+1);update();});
 function update(){
   renderFlavors();
-  var p=curFlav().p[bb.size];
+  var f=curFlav(),p=f.p[bb.size];
   document.getElementById('sumSize').textContent=SIZES[bb.size].label;
   document.getElementById('sumFlav').textContent=bb.flavor;
   document.getElementById('sumQty').textContent=bb.qty;
   document.getElementById('sumEach').textContent=gbp(p);
   document.getElementById('bbTotal').textContent=gbp(p*bb.qty);
   document.getElementById('qVal').textContent=bb.qty;
-  document.getElementById('bbVisual').textContent={mini:'🍌',midi:'🍞',maxi:'🥖'}[bb.size];
   document.getElementById('miniNote').classList.toggle('show',bb.size==='mini');
+  var wrap=document.getElementById('bbImgWrap');
+  document.getElementById('bbImg').src=f.img;
+  wrap.classList.remove('pop');void wrap.offsetWidth;wrap.classList.add('pop');
   document.getElementById('bbWa').href=wa('Hello Fresh & Yummy! 🍌 I\'d like to order '+bb.qty+' × '+SIZES[bb.size].label+' Banana Bread ('+bb.flavor+') — '+gbp(p*bb.qty)+'.');
 }
-update();
 
-/* ------- cart ------- */
+/* renders */
+document.getElementById('treatsGrid').innerHTML=MENU.treats.map(function(t,i){
+  return '<div class="treat tilt reveal" data-delay="'+(i*100)+'">'+
+    '<div class="p-img" data-lb="'+t.id+'"><span class="p-emo">'+t.emoji+'</span><img src="'+t.img+'" alt="'+t.name+'" loading="lazy" onerror="picFail(this,\''+t.name+'\')">'+(t.badge?'<span class="badge">'+t.badge+'</span>':'')+'</div>'+
+    '<h3>'+t.name+'</h3><p>'+t.desc+'</p>'+
+    '<div class="row"><span class="price-tag">'+gbp(t.price)+'</span><span style="display:flex;gap:8px;align-items:center"><button class="cart-ico" data-add="'+t.id+'" aria-label="add">🧺</button></span></div></div>';
+}).join('');
+document.getElementById('bundlesGrid').innerHTML=MENU.bundles.map(function(b,i){
+  return '<div class="bundle tilt reveal" data-delay="'+(i*100)+'">'+
+    '<div class="p-img" data-lb="'+b.id+'"><span class="p-emo">'+b.emoji+'</span><img src="'+b.img+'" alt="'+b.name+'" loading="lazy" onerror="picFail(this,\''+b.name+'\')">'+(b.badge?'<span class="badge">'+b.badge+'</span>':'')+'</div>'+
+    '<div class="body"><h3>'+b.name+'</h3><ul>'+b.items.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'+
+    '<div class="row"><span class="price-tag">'+(b.from?'from ':'')+gbp(b.price)+'</span><button class="btn btn-rust btn-sm" data-add="'+b.id+'">Add +</button></div></div></div>';
+}).join('');
+var stripItems=MENU.flavors.concat(MENU.treats).map(function(x){return {id:x.id,img:x.img,name:x.n||x.name};});
+stripItems.push({id:'yummybox',img:MENU.bundles[0].img,name:'The Yummy Box'},{id:'catering',img:'https://images.unsplash.com/photo-1555244162-803834f70e68?q=80&w=600&auto=format&fit=crop',name:'Catering'});
+var stripHTML=stripItems.map(function(s){return '<button class="strip-item" data-lb="'+s.id+'"><img src="'+s.img+'" alt="'+s.name+'" loading="lazy" onerror="picFail(this,\''+s.name+'\')"><span>'+s.name+'</span></button>';}).join('');
+document.getElementById('stripTrack').innerHTML=stripHTML+stripHTML;
+
+/* cart */
 var cart=[];
 try{cart=JSON.parse(localStorage.getItem('fy_cart')||'[]');}catch(e){cart=[];}
 function save(){try{localStorage.setItem('fy_cart',JSON.stringify(cart));}catch(e){}}
+function findProduct(id){
+  var t=MENU.treats.filter(function(x){return x.id===id;})[0];if(t)return {emoji:t.emoji,name:t.name,price:t.price,img:t.img};
+  var b=MENU.bundles.filter(function(x){return x.id===id;})[0];if(b)return {emoji:b.emoji,name:b.name,price:b.price,img:b.img};
+  return null;
+}
 function addLine(l,fromEl){
-  var ex=cart.find(function(c){return c.key===l.key;});
+  var ex=cart.filter(function(c){return c.key===l.key;})[0];
   if(ex){ex.qty+=l.qty;}else{cart.push(l);}
   save();renderCart();toast('Added '+l.name+' 🧺');fly(fromEl,l.emoji);
 }
 document.getElementById('bbAdd').addEventListener('click',function(e){
-  addLine({key:'bb|'+bb.size+'|'+bb.flavor,emoji:'🍌',name:SIZES[bb.size].label+' Banana Bread',meta:bb.flavor,price:curFlav().p[bb.size],qty:bb.qty},e.currentTarget);});
-document.querySelectorAll('[data-add]').forEach(function(b){
-  b.addEventListener('click',function(e){var p=PRODUCTS[b.getAttribute('data-add')];
-    addLine({key:b.getAttribute('data-add'),emoji:p.emoji,name:p.name,meta:'',price:p.price,qty:1},e.currentTarget);});});
+  addLine({key:'bb|'+bb.size+'|'+bb.flavor,emoji:'🍌',name:SIZES[bb.size].label+' Banana Bread',meta:bb.flavor,price:curFlav().p[bb.size],qty:bb.qty,img:curFlav().img},e.currentTarget);});
+document.addEventListener('click',function(e){
+  var add=e.target.closest?e.target.closest('[data-add]'):null;
+  if(add){var p=findProduct(add.getAttribute('data-add'));
+    if(p)addLine({key:p.name,emoji:p.emoji,name:p.name,meta:'',price:p.price,qty:1,img:p.img},add);}
+});
 
 var body=document.getElementById('cartBody');
 function renderCart(){
@@ -604,7 +883,7 @@ function renderCart(){
     body.innerHTML='<div class="cart-empty"><div class="big">🥐</div>Your tray is empty.<br>Go on, treat yourself 🍌</div>';
   }else{
     body.innerHTML=cart.map(function(l){
-      return '<div class="line"><span class="emo">'+l.emoji+'</span>'+
+      return '<div class="line"><span class="thumb">'+(l.img?'<img src="'+l.img+'" alt="" onerror="this.parentNode.textContent=\''+l.emoji+'\'">':l.emoji)+'</span>'+
         '<div class="info"><b>'+l.qty+' × '+l.name+'</b>'+(l.meta?'<small>'+l.meta+'</small>':'')+'</div>'+
         '<div class="qty"><button data-dec="'+l.key+'">−</button><button data-inc="'+l.key+'">+</button></div>'+
         '<span class="amt">'+gbp(l.price*l.qty)+'</span></div>';
@@ -617,13 +896,12 @@ function renderCart(){
 body.addEventListener('click',function(e){
   var inc=e.target.getAttribute&&e.target.getAttribute('data-inc');
   var dec=e.target.getAttribute&&e.target.getAttribute('data-dec');
-  if(inc){cart.find(function(l){return l.key===inc;}).qty++;}
-  if(dec){var l=cart.find(function(x){return x.key===dec;});l.qty--;if(l.qty<1){cart=cart.filter(function(x){return x!==l;});}}
+  if(inc){cart.filter(function(l){return l.key===inc;})[0].qty++;}
+  if(dec){var l=cart.filter(function(x){return x.key===dec;})[0];l.qty--;if(l.qty<1){cart=cart.filter(function(x){return x!==l;});}}
   if(inc||dec){save();renderCart();}
 });
 renderCart();
 
-/* ------- checkout ------- */
 document.getElementById('checkoutBtn').addEventListener('click',function(){
   if(!cart.length){toast('Your tray is empty — add some treats first 🍌');return;}
   var lines=cart.map(function(l){return '• '+l.qty+' × '+l.name+(l.meta?' ('+l.meta+')':'')+' — '+gbp(l.price*l.qty);}).join('\n');
@@ -636,16 +914,32 @@ document.getElementById('checkoutBtn').addEventListener('click',function(){
   toast('Opening WhatsApp with your order… 💬');
 });
 
-/* ------- drawer ------- */
+/* drawer */
 var drawer=document.getElementById('drawer'),overlay=document.getElementById('overlay');
 function openD(){drawer.classList.add('on');overlay.classList.add('on');}
 function closeD(){drawer.classList.remove('on');overlay.classList.remove('on');}
 document.getElementById('trayBtn').addEventListener('click',openD);
 document.getElementById('closeDrawer').addEventListener('click',closeD);
 overlay.addEventListener('click',closeD);
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeD();closeLb();}});
 
-/* ------- delight ------- */
+/* lightbox */
+var lightbox=document.getElementById('lightbox');
+function openLb(id){var it=ALL[id];if(!it)return;
+  document.getElementById('lbImg').src=it.img;
+  document.getElementById('lbName').textContent=it.name;
+  document.getElementById('lbSub').textContent=it.sub;
+  document.getElementById('lbWa').href=wa('Hello Fresh & Yummy! 👀 I saw the '+it.name+' on your website and I\'d like to order it.');
+  lightbox.classList.add('on');}
+function closeLb(){lightbox.classList.remove('on');}
+document.addEventListener('click',function(e){
+  var lb=e.target.closest?e.target.closest('[data-lb]'):null;
+  if(lb){openLb(lb.getAttribute('data-lb'));}
+});
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLb();});
+
+/* delight */
 var toastT;
 function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){el.classList.remove('on');},2200);}
 function fly(from,emoji){
@@ -656,14 +950,7 @@ function fly(from,emoji){
   requestAnimationFrame(function(){s.style.transform='translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px) scale(.4)';s.style.opacity='0';});
   setTimeout(function(){s.remove();},750);
 }
-if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-}else{
-  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
-}
 
-/* deal countdown → Sunday 23:59 */
 function tick(){
   var now=new Date(),end=new Date();
   end.setDate(now.getDate()+((7-now.getDay())%7||7));end.setHours(23,59,0,0);
@@ -672,6 +959,9 @@ function tick(){
   document.getElementById('dealTimer').textContent='⏳ Ends in '+dd+'d '+hh+'h '+mm+'m';
 }
 tick();setInterval(tick,30000);
+
+update();
+watchReveals();
 })();
 </script>
 </body>
